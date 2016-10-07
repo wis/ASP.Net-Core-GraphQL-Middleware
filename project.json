@@ -1,0 +1,17 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Microsoft.AspNetCore.Http.Abstractions": "1.1.0-alpha1-22011",
+    "Microsoft.Extensions.Options": "1.1.0-alpha1-22011",
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.1",
+    "GraphQL": "0.12.1-alpha-545"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}
