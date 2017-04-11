@@ -74,6 +74,7 @@ namespace GraphQL.Middleware
             {
                 var executionResult = await ExecuteAsync(context.Request).ConfigureAwait(true);
                 await WriteResponseAsync(context.Response , executionResult).ConfigureAwait(true);
+                return;
             }
 
             await next(context).ConfigureAwait(true);
@@ -100,7 +101,7 @@ namespace GraphQL.Middleware
         private static Task WriteResponseAsync(HttpResponse response , ExecutionResult executionResult)
         {
             response.ContentType = "application/json";
-            response.StatusCode = executionResult.Errors?.Count == 0 ? 200 : 400;
+            response.StatusCode = (executionResult.Errors?.Count ?? 0) == 0 ? 200 : 400;
             var graphqlResponse = new DocumentWriter().Write(executionResult);
             return response.WriteAsync(graphqlResponse);
         }
