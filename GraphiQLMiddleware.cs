@@ -69,6 +69,7 @@ namespace GraphQL.Middleware
             if (ShouldRespondToRequest(context.Request))
             {
                 await WriteResponseAsync(context.Response).ConfigureAwait(true);
+                return;
             }
 
             await next(context).ConfigureAwait(true);
